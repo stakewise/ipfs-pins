@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    # paths:
+    #   - 'data/*'
+    branches:
+      - main
+      - feature/ci
+
+jobs:
+  pinata:
+    name: pinata-deploy
+    uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4
+    with:
+      pin-name: 'StakeWise'
+      path: './data'
+      pinata-api-key: ${{ secrets.PINATA_API_KEU }}
+      pinata-secret-api-key: ${{ secrets.PINATA_SECRET_KEY }}
+      verbose: true
+      remove-old: false
