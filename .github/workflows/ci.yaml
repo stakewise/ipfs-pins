@@ -14,6 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: aquiladev/ipfs-action@v0.2.0
+        with:
+          path: ./data
+          service: pinata
+          pinataKey: ${{ secrets.PINATA_API_KEY }}
+          pinataSecret: ${{ secrets.PINATA_SECRET_KEY }}
+      - uses: aquiladev/ipfs-action@v0.2.0
         id: ipfs
         with:
           path: ./data
@@ -22,12 +28,6 @@ jobs:
           protocol: https
           timeout: 180000
           verbose: true
-      - uses: aquiladev/ipfs-action@v0.2.0
-        with:
-          path: ./data
-          service: pinata
-          pinataKey: ${{ secrets.PINATA_API_KEY }}
-          pinataSecret: ${{ secrets.PINATA_SECRET_KEY }}
       # - uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4
       #   with:
       #     pin-name: 'StakeWise'
