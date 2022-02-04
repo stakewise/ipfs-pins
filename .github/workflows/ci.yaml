@@ -15,14 +15,14 @@ jobs:
     steps:
       - uses: aquiladev/ipfs-action@v0.2.0
         with:
-          path: ./data
+          path: ${{ github.workspace }}/data
           service: pinata
           pinataKey: ${{ secrets.PINATA_API_KEY }}
           pinataSecret: ${{ secrets.PINATA_SECRET_KEY }}
       - uses: aquiladev/ipfs-action@v0.2.0
         id: ipfs
         with:
-          path: ./data
+          path: ${{ github.workspace }}/data
           host: ipfs.infura.io
           port: 5001
           protocol: https
