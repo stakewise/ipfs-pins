@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: aquiladev/ipfs-action@v0.2.0
+        with:
+          path: ${{ github.workspace }}/data
+          service: pinata
+          pinataKey: ${{ secrets.PINATA_API_KEY }}
+          pinataSecret: ${{ secrets.PINATA_SECRET_KEY }}
+      - uses: aquiladev/ipfs-action@v0.2.0
+        id: ipfs
+        with:
+          path: ${{ github.workspace }}/data
+          host: ipfs.infura.io
+          port: 5001
+          protocol: https
+          timeout: 180000
+          verbose: true
