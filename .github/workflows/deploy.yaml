@@ -2,11 +2,8 @@ name: Deploy
 
 on:
   push:
-    # paths:
-    #   - 'data/*'
     branches:
       - main
-      - feature/ci
 
 jobs:
   deploy:
@@ -29,11 +26,3 @@ jobs:
           protocol: https
           timeout: 180000
           verbose: true
-      # - uses: anantaramdas/ipfs-pinata-deploy-action@v1.6.4
-      #   with:
-      #     pin-name: 'StakeWise'
-      #     path: './data'
-      #     pinata-api-key: ${{ secrets.PINATA_API_KEY }}
-      #     pinata-secret-api-key: ${{ secrets.PINATA_SECRET_KEY }}
-      #     verbose: true
-      #     remove-old: false
