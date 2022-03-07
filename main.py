@@ -39,7 +39,7 @@ def upload_data_to_ipfs():
     if not infura_ids:
         raise Exception("Failed to submit deposit data to IPFS")
 
-    print("Infura IDs: " + infura_ids)
+    print("Infura IDs: ", infura_ids)
 
     pinata_ids = []
     if IPFS_PINATA_API_KEY and IPFS_PINATA_SECRET_KEY:
@@ -67,6 +67,6 @@ def upload_data_to_ipfs():
     if not pinata_ids:
         raise Exception("Failed to submit deposit data to IPFS")
 
-    print("Pinata IDs: " + pinata_ids)
+    print("Pinata IDs: ", pinata_ids)
 
 upload_data_to_ipfs()
