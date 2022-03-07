@@ -21,4 +21,4 @@ jobs:
         run: python main.py
         env:
           PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
-          PINATA_SECRET_KEY: ${{ secrets.PINATA_SECRET_KEY }
+          PINATA_SECRET_KEY: ${{ secrets.PINATA_SECRET_KEY }}
