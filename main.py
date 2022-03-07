@@ -34,7 +34,7 @@ def upload_data_to_ipfs():
                     infura_ids.append(file + ": /ipfs/" + ipfs_id)
     except Exception as e:
             print(e)
-            print(f"Failed to submit deposit data to {IPFS_PIN_ENDPOINT}")
+            print(f"Failed to submit to {IPFS_PIN_ENDPOINT}")
 
     if not infura_ids:
         raise Exception("Failed to submit to IPFS")
