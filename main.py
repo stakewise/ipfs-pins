@@ -65,7 +65,7 @@ def upload_data_to_ipfs():
             print("Failed to submit to Pinata")
 
     if not pinata_ids:
-        raise Exception("Failed to submit deposit data to IPFS")
+        raise Exception("Failed to submit to IPFS")
 
     print("Pinata IDs: ", pinata_ids)
 
