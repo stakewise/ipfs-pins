@@ -62,7 +62,7 @@ def upload_data_to_ipfs():
                     pinata_ids.append(file + ": /ipfs/" + ipfs_id)
         except Exception as e:  # noqa: E722
             print(e)
-            print("Failed to submit deposit data to Pinata")
+            print("Failed to submit to Pinata")
 
     if not pinata_ids:
         raise Exception("Failed to submit deposit data to IPFS")
