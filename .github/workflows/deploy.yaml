@@ -11,18 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: aquiladev/ipfs-action@v0.2.0
+      - uses: actions/setup-python@v2
         with:
-          path: ${{ github.workspace }}/data
-          service: pinata
-          pinataKey: ${{ secrets.PINATA_API_KEY }}
-          pinataSecret: ${{ secrets.PINATA_SECRET_KEY }}
-      - uses: aquiladev/ipfs-action@v0.2.0
-        id: ipfs
-        with:
-          path: ${{ github.workspace }}/data
-          host: ipfs.infura.io
-          port: 5001
-          protocol: https
-          timeout: 180000
-          verbose: true
+          python-version: 3.9.7
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Deploy
+        run: python main.py

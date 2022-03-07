@@ -1,0 +1,8 @@
+__pycache__/
+venv
+dist
+.DS_Store
+.mypy_cache
+.idea
+local.env
+*.spec
