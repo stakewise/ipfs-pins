@@ -21,9 +21,9 @@ def add_ipfs_prefix(ipfs_id: str) -> str:
 def upload_data_to_ipfs():
     """Submits files to the IPFS and pins the file."""
 
-    ipfs_ids = []
     files = [f for f in os.listdir("data") if os.path.isfile(os.path.join("data", f))]
 
+    infura_ids = []
     try:
         with ipfshttpclient.connect(IPFS_PIN_ENDPOINT) as client:
             for file in files:
@@ -31,11 +31,17 @@ def upload_data_to_ipfs():
                     data = json.load(json_file)
                     ipfs_id = client.add_json(data)
                     client.pin.add(ipfs_id)
-                    ipfs_ids.append(file + ": /ipfs/" + ipfs_id)
+                    infura_ids.append(file + ": /ipfs/" + ipfs_id)
     except Exception as e:
             print(e)
             print(f"Failed to submit deposit data to {IPFS_PIN_ENDPOINT}")
 
+    if not infura_ids:
+        raise Exception("Failed to submit deposit data to IPFS")
+
+    print("Infura IDs: " + infura_ids)
+
+    pinata_ids = []
     if IPFS_PINATA_API_KEY and IPFS_PINATA_SECRET_KEY:
         headers = {
             "pinata_api_key": IPFS_PINATA_API_KEY,
@@ -53,14 +59,14 @@ def upload_data_to_ipfs():
                     )
                     response.raise_for_status()
                     ipfs_id = response.json()["IpfsHash"]
-                    ipfs_ids.append(file + ": /ipfs/" + ipfs_id)
+                    pinata_ids.append(file + ": /ipfs/" + ipfs_id)
         except Exception as e:  # noqa: E722
             print(e)
             print("Failed to submit deposit data to Pinata")
 
-    if not ipfs_ids:
+    if not pinata_ids:
         raise Exception("Failed to submit deposit data to IPFS")
 
-    print(ipfs_ids)
+    print("Pinata IDs: " + pinata_ids)
 
 upload_data_to_ipfs()
