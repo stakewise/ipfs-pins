@@ -1,0 +1,63 @@
+{
+  "name": "StakeWise",
+  "network": "1",
+  "symbol": "SWISE",
+  "skin": "stakewise",
+  "location": "Ethereum",
+  "domain": "vote.stakewise.io",
+  "website": "https://stakewise.io",
+  "twitter": "stakewise_io",
+  "github": "stakewise",
+  "email": "info@stakewise.io",
+  "avatar": "ipfs://QmWeifZC6ZyE4AkDzNRKocReAwLFH52nBXbLL6n9RrWDbV",
+  "strategies": [
+    {
+      "name": "erc20-balance-of",
+      "params": {
+        "address": "0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2",
+        "symbol": "SWISE",
+        "decimals": 18
+      }
+    },
+    {
+      "name": "erc20-balance-of",
+      "params": {
+        "address": "0x7B910cc3D4B42FEFF056218bD56d7700E4ea7dD5",
+        "symbol": "Vested SWISE",
+        "decimals": 18
+      }
+    },
+    {
+      "name": "delegation",
+      "params": {
+        "symbol": "Delegated SWISE",
+        "strategies": [
+          {
+            "name": "erc20-balance-of",
+            "params": {
+              "address": "0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2",
+              "decimals": 18
+            }
+          },
+          {
+            "name": "erc20-balance-of",
+            "params": {
+              "address": "0x7B910cc3D4B42FEFF056218bD56d7700E4ea7dD5",
+              "decimals": 18
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "filters": {
+    "defaultTab": "all",
+    "minScore": 1
+  },
+  "plugins": {
+    "daoModule": {
+      "address": "0x1df2Ce448b082272dAc9B6842A54f342cF4e614e"
+    },
+    "poap": {}
+  }
+}
