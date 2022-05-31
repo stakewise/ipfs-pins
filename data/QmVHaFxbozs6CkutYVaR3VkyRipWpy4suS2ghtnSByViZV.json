@@ -1,0 +1,109 @@
+{
+  "name": "StakeWise",
+  "skin": "stakewise",
+  "about": "StakeWise DAO transparently guides decisions on development, support, and governance of its liquid staking protocol and SWISE token ecosystem. Start your proposal at https://forum.stakewise.io",
+  "avatar": "ipfs://Qmckxz2Yk4qXUEaAYUFc6jCEmX1LegQWuAgZfPtPNGaJg5",
+  "github": "stakewise",
+  "symbol": "SWISE",
+  "filters": {
+    "minScore": 1,
+    "defaultTab": "all"
+  },
+  "network": "1",
+  "plugins": {
+    "safeSnap": {
+      "safes": [
+        {
+          "network": "1",
+          "realityAddress": "0xB5cF5363c3e766e64B37b2fB9554bFE8D48ED1A0",
+          "multisend": "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761"
+        },
+        {
+          "network": "100",
+          "realityAddress": "0x479D00fF7Ed26803528dC3e3839ed8928f047321",
+          "multisend": "0xA238CBeb142c10Ef7Ad8442C6D1f9E89e07e7761"
+        }
+      ]
+    },
+    "quorum": {
+      "total": 3000000,
+      "strategy": "static",
+      "basicCount": [
+        0,
+        2
+      ]
+    },
+    "poap": {}
+  },
+  "twitter": "stakewise_io",
+  "website": "https://stakewise.io",
+  "location": "Ethereum",
+  "strategies": [
+    {
+      "name": "erc20-balance-of",
+      "network": "1",
+      "params": {
+        "address": "0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2",
+        "decimals": 18,
+        "symbol": "SWISE"
+      }
+    },
+    {
+      "name": "erc20-balance-of",
+      "network": "1",
+      "params": {
+        "address": "0x7B910cc3D4B42FEFF056218bD56d7700E4ea7dD5",
+        "decimals": 18,
+        "symbol": "Vested SWISE"
+      }
+    },
+    {
+      "name": "erc20-balance-of",
+      "network": "100",
+      "params": {
+        "address": "0xfdA94F056346d2320d4B5E468D6Ad099b2277746",
+        "decimals": 18,
+        "symbol": "SWISE on Gnosis Chain"
+      }
+    },
+    {
+      "name": "delegation",
+      "network": "1",
+      "params": {
+        "strategies": [
+          {
+            "name": "erc20-balance-of",
+            "params": {
+              "address": "0x48C3399719B582dD63eB5AADf12A40B4C3f52FA2",
+              "decimals": 18
+            }
+          },
+          {
+            "name": "erc20-balance-of",
+            "params": {
+              "address": "0x7B910cc3D4B42FEFF056218bD56d7700E4ea7dD5",
+              "decimals": 18
+            }
+          }
+        ],
+        "symbol": "Delegated SWISE"
+      }
+    },
+    {
+      "name": "delegation",
+      "network": "100",
+      "params": {
+        "strategies": [
+          {
+            "name": "erc20-balance-of",
+            "params": {
+              "address": "0xfdA94F056346d2320d4B5E468D6Ad099b2277746",
+              "decimals": 18
+            }
+          }
+        ],
+        "symbol": "Delegated SWISE on Gnosis Chain"
+      }
+    }
+  ]
+}
