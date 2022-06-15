@@ -43,11 +43,12 @@ def upload_data_to_ipfs():
 
     pinata_ids = []
     if IPFS_PINATA_API_KEY and IPFS_PINATA_SECRET_KEY:
-        headers = {
+        raw_headers = {
             "pinata_api_key": IPFS_PINATA_API_KEY,
             "pinata_secret_api_key": IPFS_PINATA_SECRET_KEY,
-            "Content-Type": "application/json",
         }
+        json_headers = raw_headers.copy()
+        json_headers["Content-Type"] = "application/json"
         try:
              for file in files:
                 with open('data/'+file) as json_file:
@@ -55,7 +56,7 @@ def upload_data_to_ipfs():
                     try:
                         data = json.load(json_file)
                         response = requests.post(
-                            headers=headers,
+                            headers=json_headers,
                             url=IPFS_PINATA_PIN_ENDPOINT_JSON,
                             data=json.dumps({"pinataContent": data}, sort_keys=True),
                         )
@@ -65,9 +66,8 @@ def upload_data_to_ipfs():
 
                     # raw context
                     except ValueError:
-                        headers.pop("Content-Type")
                         response = requests.post(
-                            headers=headers,
+                            headers=raw_headers,
                             url=IPFS_PINATA_PIN_ENDPOINT_FILE,
                             files={'file': open('data/' + file, 'rb')}
                         )
